@@ -1,1 +1,1 @@
-# This repo contains all the codes that i write while studying the DSA 
+# This repo contains all the codes that I wrote while studying the DSA 
