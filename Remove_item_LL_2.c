@@ -13,7 +13,7 @@ for(temp= head; temp!=NULL; temp = temp->link){
     count_nodes++;
     printf(" Node-%d: %d\n",count_nodes,temp->data);  
 }
-printf("%d nodes was created\n",count_nodes);
+printf("%d nodes were created\n",count_nodes);
 }
 
 void Delete_First(){
