@@ -4,7 +4,7 @@ struct Node {
     int data;
     struct Node *link;
 };
-struct Node *head,*newnode, *temp;
+struct Node *head,*newnode, *temp, *previous;// previous ptr is used during the reverse operation.
 int global_count = 0;
 
 void Display(){
@@ -134,6 +134,29 @@ void Search(){
     }
 }
 
+void Reverse(){
+    if(head==NULL){
+        printf("Linked List is empty!\n");
+    }
+    else{
+        newnode = temp = head;
+        previous = NULL;
+        while(newnode !=NULL){
+            newnode = newnode->link;
+            temp->link = previous; // here temp ptr is acting like a current ptr and newnode as a next ptr;
+            previous= temp;
+            temp = newnode;
+        }
+        head = previous; // for pointing the head ptr to the last node at the last stage of reverse operation.
+        printf("The data items of the linked list in reverse order is shown below\n");
+        temp = head; // for pointing the temp to the first node after reverse has been done in order to show the reverse version of a linked list
+        while(temp!=NULL){
+            printf("%d ",temp->data);
+            temp = temp->link;
+        }
+    }
+}
+
 int main(){
     printf("\nInsertion operation happening.\n");
     head = NULL;
@@ -165,6 +188,7 @@ int main(){
         printf("6.Insert into the last Node from the lined list\n");
         printf("7.Insert into the Desired Position Node\n");
         printf("8.Search the data item in the linked list\n");
+        printf("9.Reverse the linked list\n");
         printf("\n\nEnter the choice (1,2,3,4,5,6,7,8):");
         scanf("%d",&select);
         if(select ==1){
@@ -190,6 +214,9 @@ int main(){
         }
         else if(select ==8){
             Search();
+        }
+        else if(select ==9){
+            Reverse();
         }
         else{
             printf("\nInvalid option given!\n");
