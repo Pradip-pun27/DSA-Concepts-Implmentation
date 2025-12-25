@@ -24,8 +24,18 @@ struct Node *Create(){
     return newnode;
 }
 
-struct node *root = NULL;
+void Preorder(struct Node *root){
+    if(root == NULL){
+        return;
+    }
+    printf("%d ",root->data);
+    Preorder(root->left);
+    Preorder(root->right);
+}
+struct Node *root = NULL;
 int main() {
     root = Create();
+    printf("By Traversing the Binary Tree(data items are)\n");
+    Preorder(root);
  return 0;
 }
